@@ -1,6 +1,5 @@
 import React from 'react';
 import {  BrowserRouter as  Router, Routes, Route } from 'react-router-dom'
-import Login from'./Login';
 import Registration from'./Registration';
 import Dashboard from './users/Dashboard';
 import Orders from './users/Orders';
@@ -21,7 +20,7 @@ export default function RouterPage()
     return(
         <Router>
             <Routes>
-                <Route path='/' element={ <Login /> } />
+                <Route path="/" element={<Dashboard />} />
                 <Route path='/Registration' element={ <Registration /> } />
                 <Route path='/dashboard' element={ <Dashboard /> } />
                 <Route path='/myorders' element={ <Orders /> } />
