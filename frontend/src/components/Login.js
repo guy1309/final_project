@@ -35,7 +35,7 @@ export default function Login()
       .then((result) => {
         const dt = result.data;
         if (dt.statusCode === 200) {
-          if (email === "admin" && password === "admin") {
+          if (email === "admin" && password === "admin10") {
             localStorage.setItem("username", email);
             window.location.href = "/admindashboard";
           } else {

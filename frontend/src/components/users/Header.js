@@ -18,9 +18,9 @@ export default function Header() {
   return (
     <Fragment>
       <nav className="navbar navbar-dark bg-primary">
-        <a className="navbar-brand" href="/">
+        <h1 className="navbar-brand" >
           Our store - User Panel
-        </a>
+        </h1>
         <button
           className="navbar-toggler"
           type="button"

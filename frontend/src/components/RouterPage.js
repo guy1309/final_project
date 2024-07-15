@@ -13,6 +13,7 @@ import Medicine from './admin/Medicine';
 import Receipt from './users/Receipt';
 import SideMenu from './users/SideMenu';
 import Footer from './users/Footer';
+import Login from './Login';
 
 
 export default function RouterPage()
@@ -20,7 +21,7 @@ export default function RouterPage()
     return(
         <Router>
             <Routes>
-                <Route path="/" element={<Dashboard />} />
+                <Route path="/" element={<Login />} />
                 <Route path='/Registration' element={ <Registration /> } />
                 <Route path='/dashboard' element={ <Dashboard /> } />
                 <Route path='/myorders' element={ <Orders /> } />
