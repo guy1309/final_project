@@ -16,7 +16,7 @@ export default function Dashboard() {
       <Header />
       <div>
        
-        <body className="body2">
+        <div className="body2">
         <h1 className="h1">Welcome to our store</h1>
         <hr></hr>
         
@@ -80,7 +80,7 @@ export default function Dashboard() {
       </Card.Body>
     </Card>
     </div>
-      </body>
+      </div>
       </div>
     </>
   );
