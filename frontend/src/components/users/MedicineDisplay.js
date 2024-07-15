@@ -82,7 +82,6 @@ export default function MedicineDisplay() {
                         <h4 className="card-title"> {val.medicineName}</h4>
                         <h4 className="card-title">
                           <select
-                            id="medicineQuantity"
                             className="form-control"
                             onChange={(e) => setOrderQuantity(e.target.value)}
                           >
