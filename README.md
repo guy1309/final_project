@@ -1,9 +1,9 @@
 ## הוראות הפעלה
 
 כדי להפעיל את מסד הנתונים:
-*להפעיל את SQLQuery1.sql
-*להפעיל את SQLQuery2.sql
-*להפעיל את SQLQuery3.sql
+* להפעיל את SQLQuery1.sql
+* להפעיל את SQLQuery2.sql
+* להפעיל את SQLQuery3.sql
 
 כדי להפעיל צד שרת:
 * לפתוח `Emedicine\Emedicine.sln`
