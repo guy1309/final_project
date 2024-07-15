@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { apiUrl } from "./Url";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import './Login.css';
