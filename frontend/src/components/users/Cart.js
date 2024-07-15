@@ -5,7 +5,6 @@ import { apiUrl } from "../Url";
 
 export default function Cart() {
   const [data, setData] = useState([]);
-
   useEffect(() => {
     getData();
   }, []);
@@ -109,7 +108,31 @@ export default function Cart() {
                           Name : {val.medicineName}
                         </h4>
                         <h4 className="card-title">
-                          Quantity : {val.quantity}
+                          {/* Quantity : {val.quantity} */}
+                          Quantity:{" "}
+                          <input
+                            type="number"
+                            min="0"
+                            value={val.quantity}
+                            onChange={(e) => {
+                              const action = async () => {
+                                try {
+                                  const newQuantity = e.target.value;
+                                  await axios.patch(`${apiUrl}Medicines/setquantity`, {
+                                    cartItemID: val.id,
+                                    quantity: newQuantity,
+                                  });
+                                  setData(prev => prev.map(x => {
+                                    if (x.id !== val.id) {return x;}
+                                    return {...x, quantity: newQuantity}
+                                  }))
+                                } catch (error) {
+                                  console.error(error);
+                                }
+                              };
+                              action();
+                            }}
+                          />
                         </h4>
                         <button
                           className="btn btn-primary"

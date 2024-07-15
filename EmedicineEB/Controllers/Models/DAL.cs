@@ -67,10 +67,12 @@ namespace EmedicineEB.Controllers.Models
 
         public Response login(Users users, SqlConnection connection)
         {
-            using var cmd = new SqlCommand("SELECT * FROM Users WHERE Email=@Email AND Password=@Password");
+            using var cmd = new SqlCommand("SELECT * FROM Users WHERE Email=@Email AND DECRYPTBYPASSPHRASE('Password', Password)=@Password");
             cmd.Connection = connection;
             cmd.Parameters.AddWithValue("@Email", users.Email);
-            cmd.Parameters.AddWithValue("@Password", users.Password);
+            // cmd.Parameters.AddWithValue("@Password", users.Password);
+            var param = cmd.Parameters.Add("@Password", SqlDbType.VarChar, 64);
+            param.Value = users.Password;
             connection.Open();
             using var rdr = cmd.ExecuteReader();
             Response response = new Response();
@@ -179,6 +181,45 @@ namespace EmedicineEB.Controllers.Models
             }
             return response;
         }
+
+
+        public Response updateQuantity(int cartItemID, int quantity, SqlConnection conn)
+        {
+            Response response = new();
+            if (quantity < 0)
+            {
+                response.StatusMessage = "Invalid quantity";
+                response.StatusCode = 401;
+                return response;
+            }
+
+            SqlCommand cmd = new()
+            {
+                Connection = conn
+            };
+            conn.Open();
+            cmd.Parameters.AddWithValue("@cartitemid", cartItemID);
+            cmd.Parameters.AddWithValue("@quantity", quantity);
+
+            cmd.CommandText =
+                quantity == 0 ?
+                    "DELETE FROM Cart WHERE ID = @cartitemid" :
+                    "UPDATE Cart SET Quantity = @quantity WHERE ID = @cartitemid";
+
+            var recordsAffected = cmd.ExecuteNonQuery();
+
+            if (recordsAffected == 0)
+            {
+                response.StatusMessage = "No records changed";
+                response.StatusCode = 500;
+                return response;
+            }
+
+            response.StatusMessage = "Quantity updated successfully";
+            response.StatusCode = 200;
+            return response;
+        }
+
         public Response removeFromCart(Cart cart, SqlConnection connection)
         {
             Response response = new Response();
