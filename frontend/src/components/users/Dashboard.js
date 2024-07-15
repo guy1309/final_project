@@ -24,7 +24,7 @@ export default function Dashboard() {
           On our website you can buy products that you need, for example soaps,
           ointments, medicines, protein powders and more. In the system you can
           create a user and connect at any time you want to buy from our
-          products. In addition, you will be able to see all your orders and
+          products. In addition, you will be able to see all your orders in my Orders page and
           blockades in the system. The data you retrieve will be stored in our
           database. For any other question you may want to know, you can see at
           the end of the page the ways to contact with us. In the bottom there are some of are products....
